@@ -33,26 +33,43 @@ THREADS=1
 
 # GCC toolchain version numbers
 GMP_VERSION=6.2.1
-MPFR_VERSION=4.1.0
-MPC_VERSION=1.2.1
-GCC_VERSION=11.2.0
-BINUTILS_VERSION=2.37
-IASL_VERSION=20220331
+MPFR_VERSION=4.2.0
+MPC_VERSION=1.3.1
+GCC_VERSION=11.3.0
+BINUTILS_VERSION=2.40
+IASL_VERSION="R06_28_23"
 # CLANG version number
 CLANG_VERSION=14.0.6
 CMAKE_VERSION=3.23.2
 NASM_VERSION=2.15.05
 
-# GCC toolchain archive locations
-# These are sanitized by the jenkins toolchain test builder, so if
+# Filename for each package
+GMP_ARCHIVE="gmp-${GMP_VERSION}.tar.xz"
+MPFR_ARCHIVE="mpfr-${MPFR_VERSION}.tar.xz"
+MPC_ARCHIVE="mpc-${MPC_VERSION}.tar.gz"
+GCC_ARCHIVE="gcc-${GCC_VERSION}.tar.xz"
+BINUTILS_ARCHIVE="binutils-${BINUTILS_VERSION}.tar.xz"
+IASL_ARCHIVE="${IASL_VERSION}.tar.gz"
+# CLANG toolchain FILE locations
+LLVM_ARCHIVE="llvm-${CLANG_VERSION}.src.tar.xz"
+CLANG_ARCHIVE="clang-${CLANG_VERSION}.src.tar.xz"
+CRT_ARCHIVE="compiler-rt-${CLANG_VERSION}.src.tar.xz"
+CTE_ARCHIVE="clang-tools-extra-${CLANG_VERSION}.src.tar.xz"
+LLVMCMAKE_ARCHIVE="cmake-${CLANG_VERSION}.src.tar.xz"
+CMAKE_ARCHIVE="cmake-${CMAKE_VERSION}.tar.gz"
+NASM_ARCHIVE="nasm-${NASM_VERSION}.tar.bz2"
+
+# These URLs are sanitized by the jenkins toolchain test builder, so if
 # a completely new URL is added here, it probably needs to be added
 # to the jenkins build as well, or the builder won't download it.
-GMP_ARCHIVE="https://ftpmirror.gnu.org/gmp/gmp-${GMP_VERSION}.tar.xz"
-MPFR_ARCHIVE="https://ftpmirror.gnu.org/mpfr/mpfr-${MPFR_VERSION}.tar.xz"
-MPC_ARCHIVE="https://ftpmirror.gnu.org/mpc/mpc-${MPC_VERSION}.tar.gz"
-GCC_ARCHIVE="https://ftpmirror.gnu.org/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.xz"
-BINUTILS_ARCHIVE="https://ftpmirror.gnu.org/binutils/binutils-${BINUTILS_VERSION}.tar.xz"
-IASL_ARCHIVE="https://acpica.org/sites/acpica/files/acpica-unix2-${IASL_VERSION}.tar.gz"
+
+# GCC toolchain archive locations
+GMP_BASE_URL="https://ftpmirror.gnu.org/gmp"
+MPFR_BASE_URL="https://ftpmirror.gnu.org/mpfr"
+MPC_BASE_URL="https://ftpmirror.gnu.org/mpc"
+GCC_BASE_URL="https://ftpmirror.gnu.org/gcc/gcc-${GCC_VERSION}"
+BINUTILS_BASE_URL="https://ftpmirror.gnu.org/binutils"
+IASL_BASE_URL="https://github.com/acpica/acpica/archive/refs/tags"
 # CLANG toolchain archive locations
 LLVM_ARCHIVE="https://github.com/llvm/llvm-project/releases/download/llvmorg-${CLANG_VERSION}/llvm-${CLANG_VERSION}.src.tar.xz"
 CLANG_ARCHIVE="https://github.com/llvm/llvm-project/releases/download/llvmorg-${CLANG_VERSION}/clang-${CLANG_VERSION}.src.tar.xz"
@@ -74,7 +91,7 @@ MPC_DIR="mpc-${MPC_VERSION}"
 GCC_DIR="gcc-${GCC_VERSION}"
 # shellcheck disable=SC2034
 BINUTILS_DIR="binutils-${BINUTILS_VERSION}"
-IASL_DIR="acpica-unix2-${IASL_VERSION}"
+IASL_DIR="acpica-${IASL_VERSION}"
 # CLANG toolchain directories
 LLVM_DIR="llvm-${CLANG_VERSION}.src"
 CLANG_DIR="clang-${CLANG_VERSION}.src"
